@@ -25,9 +25,9 @@ class Instructor extends Person {
     grade(student, subject) {
         return `${student.name} receives a perfect score on ${subject}`;
     }
-    giveGrade() {
+    //giveGrade() {
 
-    }
+    //}
 };
 
 class Student extends Person {
@@ -36,10 +36,12 @@ class Student extends Person {
         this.previousBackground = studentProperties.previousBackground;
         this.className = studentProperties.className;
         this.favSubjects = studentProperties.favSubjects;
-        this.grade = studentProperties.grade;
+        //this.grade = studentProperties.grade;
     }
     listsSubjects() {
-        return `${favSubjects}`;
+        for (let i = 0; i < this.favSubjects.length; i++){
+        return (`${this.name} loves ${this.favSubjects[i]}`);
+        }
     }
     PRAssignment(subject) {
         return `${this.name} has submitted a PR for ${subject}`;
@@ -59,8 +61,8 @@ class ProjectManagers extends Instructor {
     standup(channel) {
         return `${this.name} announces to ${channel}, @channel standy times!​​​​​`;
     }
-    debugsCode() {
-        return `${name} debugs ${student.name}'s code on ${subject}`;
+    debugsCode(student, subject) {
+        return `${this.name} debugs ${student.name}'s code on ${subject}`;
     }
 }
 
@@ -173,10 +175,12 @@ const bulbasaur = new ProjectManagers({
 });
 
 
-console.log(charmander.listsSubjects);
+console.log(charmander.favSubjects);
 console.log(charmander.speak());
 console.log(squirtle.demo());
 console.log(charizard.PRAssignment("Flame Works"));
 console.log(bulbasaur.standup("#vineWhip"));
 console.log(squirtle.grade(bulbasaur, "Sunbeam"));
 console.log(charmeleon.sprintChallenge("Flame Barage"));
+console.log(charmander.listsSubjects());
+console.log(bulbasaur.debugsCode(bulbasaur, "Chrome"));
